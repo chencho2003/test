@@ -1,10 +1,20 @@
 import mysql from "mysql";
+require("dotenv").config();
 
 export const db = mysql.createConnection({
-  host: "containers-us-west-120.railway.app",
-  user: "root",
-  password: "M0B25CpqaBKZLeT2j5je",
-  database: "railway",
-  port: 5849,
+  host: process.env.RAILWAY_DATABASE_HOST || "localhost",
+  user: process.env.RAILWAY_DATABASE_USER || "root",
+  password: process.env.RAILWAY_DATABASE_PASSWORD || "",
+  database: process.env.RAILWAY_DATABASE_NAME || "railway",
+  port: process.env.RAILWAY_DATABASE_PORT || 3306,
 });
-console.log("started");
+
+db.connect((err) => {
+  if (err) {
+    console.error("Error connecting to the database:", err);
+    return;
+  }
+  console.log("Connected to the database");
+});
+
+export default db;
