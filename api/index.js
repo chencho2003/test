@@ -1,7 +1,7 @@
 import express from "express";
 import userRoutes from "./routes/users.js";
 import cors from "cors";
-
+require("dotenv").config();
 const app = express();
 
 app.use(express.json());
@@ -16,4 +16,4 @@ app.use(
 
 app.use("/", userRoutes);
 
-app.listen(8800);
+app.listen(process.env.PORT || 8800);
