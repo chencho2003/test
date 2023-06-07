@@ -9,7 +9,7 @@ app.use(express.json());
 app.use(
   cors({
     origin:
-      "mysql://root:M0B25CpqaBKZLeT2j5je@containers-us-west-120.railway.app:5849/railway",
+      "test-backend-production-73b3.up.railway.app",
     credentials: true,
   })
 );
